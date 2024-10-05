@@ -1,0 +1,23 @@
+.box {
+  width: 400px;
+  height: 400px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.button-container {
+  width: 220px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.somar {
+  background-color: green;
+}
+
+.tirar {
+  background-color: red;
+}
