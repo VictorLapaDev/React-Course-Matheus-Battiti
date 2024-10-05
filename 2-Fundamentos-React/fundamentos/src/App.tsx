@@ -1,5 +1,6 @@
 
 import './App.css'
+import Challenge from './components/Challenge'
 import FirstComponent from './components/FirstComponent'
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <div className='pai'>
       <h1>Componentes</h1>
       <FirstComponent texto='Primeiro componente'/>
+      <Challenge/>
     </div>
     </>
   )
