@@ -3,6 +3,7 @@ import vovo from "./assets/vovoMax.jfif"
 import ConditionalRender from './components/ConditionalRender'
 import ListRender from './components/ListRender'
 import ManageData from './components/ManageData'
+import ShowUserName from './components/ShowUserName'
 
 function App() {
 
@@ -29,8 +30,10 @@ function App() {
 
     <ListRender/>
 
-
     <ConditionalRender/>
+
+    <ShowUserName name='Lapa' />
+
 
     </>
   )
