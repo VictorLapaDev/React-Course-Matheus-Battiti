@@ -3,6 +3,7 @@ import vovo from "./assets/vovoMax.jfif"
 import CarDetails from './components/CarDetails'
 import ConditionalRender from './components/ConditionalRender'
 import Container from './components/Container'
+import ExportFunction from './components/ExportFunction'
 import ListRender from './components/ListRender'
 import ManageData from './components/ManageData'
 import ShowUserName from './components/ShowUserName'
@@ -15,8 +16,12 @@ function App() {
     {id: 3, marca: "Cherolet", cor: "Vermelho", km: 0, novo: true},
     {id: 4, marca: "Ferrari", cor: "Branco",km: 4000, novo: false},
     {id: 5, marca: "Renault", cor: "Laranja", km: 0, novo: true},
-
   ]
+
+
+  function showMessage(){
+    alert("Evento do componente pai ")
+  }
   return (
     <>
 
@@ -64,6 +69,9 @@ function App() {
     <Container>
         <p>Ola, estou dentro do componente</p>
     </Container>
+
+    {/* executando função em componente filho do componente pai */}
+    <ExportFunction myFunction={showMessage}/>
     </>
   )
 }
