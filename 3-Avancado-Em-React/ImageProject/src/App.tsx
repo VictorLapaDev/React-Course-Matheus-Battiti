@@ -1,5 +1,6 @@
 import './App.css'
 import vovo from "./assets/vovoMax.jfif" 
+import ConditionalRender from './components/ConditionalRender'
 import ListRender from './components/ListRender'
 import ManageData from './components/ManageData'
 
@@ -27,6 +28,9 @@ function App() {
     <ManageData/>
 
     <ListRender/>
+
+
+    <ConditionalRender/>
 
     </>
   )
