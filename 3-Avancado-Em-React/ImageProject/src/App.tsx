@@ -10,6 +10,7 @@ import ManageData from './components/ManageData'
 import ShowUserName from './components/ShowUserName'
 import Message from './components/Message'
 import ChangeMessageState from './components/ChangeMessageState'
+import Challenge4 from './components/Challenge4'
 
 function App() {
 
@@ -21,6 +22,13 @@ function App() {
     {id: 5, marca: "Renault", cor: "Laranja", km: 0, novo: true},
   ]
 
+
+  const userDetails = [
+    {id: 1, name: "Jõao", age: 18, profission:"Dev"},
+    {id: 2, name: "Lapa", age: 19, profission:"Junior Dev"},
+    {id: 3, name: "Lucas", age: 17, profission:"Medico"},
+    {id: 4, name: "Murilo", age: 16, profission:"Veterinario"},
+  ]
 
   function showMessage(){
     alert("Evento do componente pai ")
@@ -85,6 +93,13 @@ function App() {
     {/* state lift */}
     <Message message={message}/>
     <ChangeMessageState MyFunction={messageHandle}/>
+
+    {/* Challenge 4 */}
+    <h1>Challenge 4</h1>
+    {userDetails.map((item) => (
+      <Challenge4 key={item.id} age={item.age} id={item.id} name={item.name} profission={item.profission}/>
+    ))}
+
     </>
   )
 }
