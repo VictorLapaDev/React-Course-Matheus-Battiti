@@ -8,6 +8,14 @@ import ShowUserName from './components/ShowUserName'
 
 function App() {
 
+  const car = [
+    {id: 1, marca: "Fiat", cor: "Preto", km: 1000, novo: false},
+    {id: 2, marca: "Honda", cor: "Azul", km: 200, novo: false},
+    {id: 3, marca: "Cherolet", cor: "Vermelho", km: 0, novo: true},
+    {id: 4, marca: "Ferrari", cor: "Branco",km: 4000, novo: false},
+    {id: 5, marca: "Renault", cor: "Laranja", km: 0, novo: true},
+
+  ]
   return (
     <>
 
@@ -39,7 +47,17 @@ function App() {
     {/* utilizando props */}
     <ShowUserName name='Lapa' />
 
-    <CarDetails brand='fiat' color='azul' km={1000} />
+    {/* desestruturando props */}
+    <CarDetails brand='fiat' color='azul' km={1000} novo={true} id={10}/>
+
+    {/* reutilização com loops */}
+    {car.map((item) => {
+      return(
+        
+        <CarDetails key={item.id} brand={item.marca} km={item.km} color={item.cor} novo={item.novo} id={item.id}/>
+      )
+    })}
+
     </>
   )
 }
