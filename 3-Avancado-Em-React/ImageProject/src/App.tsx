@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import './App.css'
 import vovo from "./assets/vovoMax.jfif" 
 import CarDetails from './components/CarDetails'
@@ -7,6 +8,8 @@ import ExportFunction from './components/ExportFunction'
 import ListRender from './components/ListRender'
 import ManageData from './components/ManageData'
 import ShowUserName from './components/ShowUserName'
+import Message from './components/Message'
+import ChangeMessageState from './components/ChangeMessageState'
 
 function App() {
 
@@ -21,6 +24,13 @@ function App() {
 
   function showMessage(){
     alert("Evento do componente pai ")
+  }
+
+
+  const [message, setMessage] = useState("");
+
+  const messageHandle = (msg) =>{
+    setMessage(msg);
   }
   return (
     <>
@@ -59,11 +69,9 @@ function App() {
     {/* reutilização com loops */}
     {car.map((item) => {
       return(
-        
         <CarDetails key={item.id} brand={item.marca} km={item.km} color={item.cor} novo={item.novo} id={item.id}/>
       )
     })}
-
 
     {/* utilizando html dentro do componente utilizando o children */}
     <Container>
@@ -72,6 +80,11 @@ function App() {
 
     {/* executando função em componente filho do componente pai */}
     <ExportFunction myFunction={showMessage}/>
+
+
+    {/* state lift */}
+    <Message message={message}/>
+    <ChangeMessageState MyFunction={messageHandle}/>
     </>
   )
 }
