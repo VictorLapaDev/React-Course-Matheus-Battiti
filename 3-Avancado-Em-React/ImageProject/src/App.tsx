@@ -1,5 +1,6 @@
 import './App.css'
 import vovo from "./assets/vovoMax.jfif" 
+import ListRender from './components/ListRender'
 import ManageData from './components/ManageData'
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
 
     <ManageData/>
 
+    <ListRender/>
 
     </>
   )
