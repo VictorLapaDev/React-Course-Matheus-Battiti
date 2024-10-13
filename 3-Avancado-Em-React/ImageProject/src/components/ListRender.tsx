@@ -24,6 +24,7 @@ const ListRender = () => {
 
   return (
     <div>
+        <h1>Renderizando listas</h1>
         <ul>
             {list.map((item, i) => {
                 return(

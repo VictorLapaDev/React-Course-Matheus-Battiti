@@ -1,5 +1,6 @@
 import './App.css'
 import vovo from "./assets/vovoMax.jfif" 
+import CarDetails from './components/CarDetails'
 import ConditionalRender from './components/ConditionalRender'
 import ListRender from './components/ListRender'
 import ManageData from './components/ManageData'
@@ -26,15 +27,19 @@ function App() {
 
     </div>
 
+    {/* useState */}
     <ManageData/>
 
+    {/* renderizando com map */}
     <ListRender/>
 
+    {/* condicional para mostar coisas */}
     <ConditionalRender/>
 
+    {/* utilizando props */}
     <ShowUserName name='Lapa' />
 
-
+    <CarDetails brand='fiat' color='azul' km={1000} />
     </>
   )
 }
