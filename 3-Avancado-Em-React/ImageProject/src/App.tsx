@@ -2,6 +2,7 @@ import './App.css'
 import vovo from "./assets/vovoMax.jfif" 
 import CarDetails from './components/CarDetails'
 import ConditionalRender from './components/ConditionalRender'
+import Container from './components/Container'
 import ListRender from './components/ListRender'
 import ManageData from './components/ManageData'
 import ShowUserName from './components/ShowUserName'
@@ -58,6 +59,11 @@ function App() {
       )
     })}
 
+
+    {/* utilizando html dentro do componente utilizando o children */}
+    <Container>
+        <p>Ola, estou dentro do componente</p>
+    </Container>
     </>
   )
 }
