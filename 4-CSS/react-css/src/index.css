@@ -1,0 +1,18 @@
+body{
+  margin: 0;
+  padding: 0;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: red;
+}
+
+.purple-title{
+  color: purple;
+  background-color: black;
+  padding: 3;
+}
+
+.pink-title{
+  color: pink;
+  background-color: green;
+  padding: 10;
+}

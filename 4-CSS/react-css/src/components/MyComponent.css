@@ -1,0 +1,13 @@
+.my-comp-h1{
+    color: green;
+    font-size: large;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+
+.my-comp-para{
+    background-color: black;
+    color: gold;
+    padding: 10;
+}
