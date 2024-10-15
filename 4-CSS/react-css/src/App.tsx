@@ -10,6 +10,11 @@ function App() {
       <p>Css global</p>
     {/* CSS em componente */}
     <MyComponent/>
+
+    {/* inline CSS */}
+    <p style={{color: "blue",padding: "10px", borderTop: "2px solid red", backgroundColor: "yellow"}}>
+      Este elemento foi estilizado de forma inline
+    </p>
     </>
   )
 }
