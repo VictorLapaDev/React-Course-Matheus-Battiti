@@ -8,11 +8,14 @@ function App() {
 
   const [count , setCount] = useState(0);
 
+  const purpleTitle = true;
+
   return (
     <>
     {/* CSS global */}
       <h1>React com css</h1>
       <p>Css global</p>
+
     {/* CSS em componente */}
     <MyComponent/>
 
@@ -24,6 +27,9 @@ function App() {
     {/* css inline dinâmico */}
     <h2 style={count<= 10?({color: "blue"}): ({color: "green"})}>Css inline feito de forma dinamica(maior que 10 é verde, menor é azul)</h2>
     <Conta count={count} myFunction={setCount}/>
+
+    {/* Classe dnamica */}
+    <h2 className={purpleTitle? 'purple-title' : 'pink-title'}>Este titulo vai ter uma classe dinamica</h2>
     </>
   )
 }
