@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import Conta from './components/Conta'
 import MyComponent from './components/MyComponent'
+import CssModules from './components/CssModules';
 
 function App() {
 
@@ -30,6 +31,9 @@ function App() {
 
     {/* Classe dnamica */}
     <h2 className={purpleTitle? 'purple-title' : 'pink-title'}>Este titulo vai ter uma classe dinamica</h2>
+
+    {/* CSS modules */}
+    <CssModules/>
     </>
   )
 }
