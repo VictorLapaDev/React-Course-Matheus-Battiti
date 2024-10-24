@@ -21,6 +21,10 @@ const Forms = ({user}: props) => {
   const handleSubmit = (e) => {
     e.preventDefault(); //impede a pagina de recarregar dps de dar o submit
     alert(`Sucesso, enviando o formulario, ${name}, ${email}`)
+
+    //7- limpar formulario
+    setName('')
+    setEmail('')
   }
   
   return (
