@@ -10,8 +10,17 @@ const Forms = () => {
                 <input type="text" name="name" placeholder="Digite seu nome"/>
             </div>
 
+            {/* 2-label envolvendo input */}
+            <label className="container">
+              <span>Emai:</span>
+              <input type="text" name='email' placeholder="Digite seu email" />
+            </label>
+
+
             <input className="send" type="submit" value='Enviar' />
+
         </form>
+
     </div>
   )
 }
