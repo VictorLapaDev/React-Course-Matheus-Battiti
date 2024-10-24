@@ -1,0 +1,23 @@
+form{
+    border: 2px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 5px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 22px;
+    margin-right: 22px;
+
+}
+
+.send{
+    margin-bottom: 20px;
+}
