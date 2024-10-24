@@ -21,3 +21,9 @@ form{
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+textarea{
+    margin-top: 20px;
+    margin-left: 22px;
+    margin-right: 22px;
+}
