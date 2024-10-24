@@ -14,6 +14,8 @@ const Forms = ({user}: props) => {
   const [name, setName] = useState(user ? user.name : '');
   const [email, setEmail] = useState(user ? user.email : ''); //ve se usuario ja existe ou se ele ja tem o valor armazenado, preenchendo diretamente o input
   const [bio, setBio] = useState('')
+  const [role, setRole] = useState('')
+
 
   const handleName = (e) => {
     setName(e.target.value)
@@ -50,6 +52,17 @@ const Forms = ({user}: props) => {
             {/* 8- text area */}
             <label >
               <textarea name="bio" placeholder="Descrição do usuario" onChange={(e) => setBio(e.target.value)} value={bio}></textarea>
+            </label>
+
+
+            {/* 9- select */}
+            <label className="container">
+              <span>Funções do sistema</span>
+              <select name="role" onChange={(e) => setRole(e.target.value)} value={role}>
+                <option value="user">Usuario</option>
+                <option value="editor">Editor</option>
+                <option value="admin">Administrador</option>
+              </select>
             </label>
 
             <input className="send" type="submit" value='Enviar' />
