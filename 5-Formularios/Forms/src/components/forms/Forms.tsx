@@ -13,11 +13,17 @@ const Forms = () => {
     setName(e.target.value)
   }
   
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); //impede a pagina de recarregar dps de dar o submit
+    alert(`Sucesso, enviando o formulario, ${name}, ${email}`)
+  }
   
   return (
     <div>
+      {/* 5- envio de forms */}
         {/*1-criação de forms*/}
-        <form>
+        <form onSubmit={handleSubmit}>
             <div className="container">
                 <label htmlFor="name">Nome: </label>
                 <input type="text" name="name" placeholder="Digite seu nome" onChange={handleName}/>
