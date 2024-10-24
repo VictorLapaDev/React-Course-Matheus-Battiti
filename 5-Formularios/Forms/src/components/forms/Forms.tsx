@@ -13,6 +13,8 @@ const Forms = ({user}: props) => {
   // 3- Gerenciamento de dados
   const [name, setName] = useState(user ? user.name : '');
   const [email, setEmail] = useState(user ? user.email : ''); //ve se usuario ja existe ou se ele ja tem o valor armazenado, preenchendo diretamente o input
+  const [bio, setBio] = useState('')
+
   const handleName = (e) => {
     setName(e.target.value)
   }
@@ -25,6 +27,7 @@ const Forms = ({user}: props) => {
     //7- limpar formulario
     setName('')
     setEmail('')
+    setBio('')
   }
   
   return (
@@ -39,10 +42,15 @@ const Forms = ({user}: props) => {
 
             {/* 2-label envolvendo input */}
             <label className="container">
-              <span>Emai:</span>
+              <span>Email:</span>
               <input type="text" name='email' placeholder="Digite seu email" onChange={(e) => setEmail(e.target.value)} value={email}/>
             </label>
 
+
+            {/* 8- text area */}
+            <label >
+              <textarea name="bio" placeholder="Descrição do usuario" onChange={(e) => setBio(e.target.value)} value={bio}></textarea>
+            </label>
 
             <input className="send" type="submit" value='Enviar' />
 
