@@ -26,7 +26,7 @@ const Forms = () => {
             {/* 2-label envolvendo input */}
             <label className="container">
               <span>Emai:</span>
-              <input type="text" name='email' placeholder="Digite seu email" />
+              <input type="text" name='email' placeholder="Digite seu email" onChange={(e) => setEmail(e.target.value)}/>
             </label>
 
 
