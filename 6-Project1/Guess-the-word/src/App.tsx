@@ -87,15 +87,34 @@ function App() {
         ...actualWrongLetters,
         normalizedLetter,
       ]);
+
+      setGuesses((actualGuesses) => {
+        return actualGuesses - 1;
+      })
     } 
 
+    
+  }
+
+
+  const clearLetterStates = () => {
+    setGuessedLetters([])
+    setWrongLetters([]);
   }
   
-  console.log(wrongLetters, guessedLetters);
+  useEffect(() => {
+    if(guesses <= 0){
+      //reset all stages
+      clearLetterStates()
+      setGameStage(stages[2].name)
+    }
+  }, [guesses])
   
   //Restart game
   const restartGame = () => {
-    setGameStage(stages[0].name)
+    setScore(0);
+    setGuesses(3);
+    setGameStage(stages[0].name);
   }
 
 
