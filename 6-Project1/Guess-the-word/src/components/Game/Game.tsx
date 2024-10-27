@@ -70,7 +70,6 @@ const Game = ({myFunction, letters, pickedCategory, pickedWord, guessedLetters, 
         
       </div>
 
-      {/* <button onClick={myFunction}>Finalizar jogo</button> */}
     </div>
   )
 }

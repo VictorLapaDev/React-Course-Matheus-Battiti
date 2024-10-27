@@ -124,7 +124,7 @@ function App() {
 
       {gameStage === 'start' && <StartScreen myFunction={startGame}/>}
       {gameStage === 'game' && <Game myFunction={verifyLetter} letters={letters} pickedCategory={pickedCategory} pickedWord={pickedWord} guessedLetters={guessedLetters} wrongLetters={wrongLetters} guesses={guesses} score={score}/>}
-      {gameStage === 'end' && <End myFunction={restartGame}/>}
+      {gameStage === 'end' && <End myFunction={restartGame} score={score}/>}
 
     </div>
   )
