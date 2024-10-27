@@ -1,26 +1,42 @@
 import './Game.css'
 
 interface props{
-  myFunction : () => void
+  myFunction : () => void,
+  pickedWord : string,
+  pickedCategory : string,
+  letters : string[],
+  guessedLetters : string[],
+  wrongLetters : string[],
+  guesses : number,
+  score : number
 }
 
-const Game = ({myFunction}: props) => {
+const Game = ({myFunction, letters, pickedCategory, pickedWord, guessedLetters, wrongLetters, guesses, score}: props) => {
   return (
     <div className='game'>
       
       <p className="points">
-        <span>Pontuação: 00</span>
+        <span>Pontuação: {score}</span>
       </p>
 
       <h2>Adivinhe a palavra</h2>
 
       <h3 className="tip">
-        Dica sobre a palavra: <span>Dica ....</span>
+        Dica sobre a palavra: <span>{pickedCategory}</span>
       </h3>
 
+      <p>Você ainda tem {guesses} tentativas</p>
+
       <div className="wordContainer">
-        <span className='letter'>A</span>
-        <span className="blankSquare"></span>
+
+        {letters.map((letter, i) => {
+         return guessedLetters.includes(letter) ? (
+            <span key={i} className='letter'>{letter}</span>
+          ) : (
+              <span key={i} className='blankSquare'></span>
+          );
+        })}
+
       </div>
 
       <div className="letterContainer">
@@ -33,8 +49,10 @@ const Game = ({myFunction}: props) => {
 
       <div className="wrongLettersContainer">
         <p>Letras já utilizadas:</p>
-        <span>a, </span>
-        <span>b, </span>
+        {wrongLetters.map((letter, i) => {
+          return <span key={i}>{letter}, </span>
+        })}
+        
       </div>
 
       {/* <button onClick={myFunction}>Finalizar jogo</button> */}
