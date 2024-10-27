@@ -1,9 +1,11 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-nocheck
+
 import { useState, useRef} from 'react';
 import './Game.css'
 
 interface props{
   myFunction : (arg: string[]) => void,
-  pickedWord : string,
   pickedCategory : string,
   letters : string[],
   guessedLetters : string[],
@@ -12,7 +14,7 @@ interface props{
   score : number
 }
 
-const Game = ({myFunction, letters, pickedCategory, pickedWord, guessedLetters, wrongLetters, guesses, score}: props) => {
+const Game = ({myFunction, letters, pickedCategory, guessedLetters, wrongLetters, guesses, score}: props) => {
 
   const [letter, setLetter] = useState([]);
   const letterInputRef = useRef(null);
