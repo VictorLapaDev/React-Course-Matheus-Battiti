@@ -1,0 +1,14 @@
+*{
+    margin: auto;
+    padding: 0;
+}
+
+html, body{
+    height: 100%;
+}
+
+body{
+    font-family:  Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background: linear-gradient(180deg, rgba(9, 35, 175, 1) 0%, rgb(110, 104, 104) 100%);
+    color: #fff;
+}
