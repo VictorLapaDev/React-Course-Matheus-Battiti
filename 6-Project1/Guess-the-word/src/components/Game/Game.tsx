@@ -1,7 +1,8 @@
+import { useState, useRef} from 'react';
 import './Game.css'
 
 interface props{
-  myFunction : () => void,
+  myFunction : (arg: string[]) => void,
   pickedWord : string,
   pickedCategory : string,
   letters : string[],
@@ -12,6 +13,20 @@ interface props{
 }
 
 const Game = ({myFunction, letters, pickedCategory, pickedWord, guessedLetters, wrongLetters, guesses, score}: props) => {
+
+  const [letter, setLetter] = useState([]);
+  const letterInputRef = useRef(null);
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    myFunction(letter);
+
+    setLetter([]);
+    letterInputRef.current.focus(); 
+  }
+
   return (
     <div className='game'>
       
@@ -41,8 +56,8 @@ const Game = ({myFunction, letters, pickedCategory, pickedWord, guessedLetters, 
 
       <div className="letterContainer">
         <p>Tente advinhar uma letra da palavra: </p>
-        <form >
-          <input type="text" name='letter' maxLength={1} required />
+        <form onSubmit={handleSubmit}>
+          <input type="text" name='letter' maxLength={1} required onChange={(e) => setLetter(e.target.value)} value={letter} ref={letterInputRef}/>
           <button>Jogar</button>
         </form>
       </div>
