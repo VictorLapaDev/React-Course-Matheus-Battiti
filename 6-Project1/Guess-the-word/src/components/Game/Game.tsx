@@ -27,7 +27,7 @@ const Game = ({myFunction}: props) => {
         <p>Tente advinhar uma letra da palavra: </p>
         <form >
           <input type="text" name='letter' maxLength={1} required />
-          <button>Jogar?</button>
+          <button>Jogar</button>
         </form>
       </div>
 
