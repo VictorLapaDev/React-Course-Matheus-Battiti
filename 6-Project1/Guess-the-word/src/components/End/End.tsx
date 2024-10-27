@@ -1,13 +1,15 @@
 import './End.css'
 
 interface props{
-  myFunction : () => void
+  myFunction : () => void,
+  score : number
 }
 
-const End = ({myFunction}: props) => {
+const End = ({myFunction, score}: props) => {
   return (
     <div>
-        <h1>Game Over</h1>
+        <h1>Fim de Jogo!</h1>
+        <h2>A sua pontuação foi: <span>{score}</span></h2>
         <button onClick={myFunction}>Recomeçar jogo</button>
     </div>
   )
