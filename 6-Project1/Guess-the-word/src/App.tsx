@@ -42,6 +42,8 @@ function App() {
   }
 
 
+
+
   //Start the game
   const startGame = () => {
 
@@ -56,8 +58,11 @@ function App() {
     setPickedCategory(category);
     setLetters(letters);
     
+    //Change the stage of game
     setGameStage(stages[1].name)
   }
+
+  
 
   //Processa a letra que é inserida
   const verifyLetter = () => {
