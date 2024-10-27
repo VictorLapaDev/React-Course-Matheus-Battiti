@@ -68,12 +68,31 @@ function App() {
 
 
   //Processa a letra que é inserida
-  const verifyLetter = (letter: unknown) => {
+  const verifyLetter = (letter) => {
 
-    
-    console.log(letter)
+    const normalizedLetter = letter.toLowerCase();
+
+    if(guessedLetters.includes(normalizedLetter) || wrongLetters.includes(normalizedLetter)){ //caso a letra ja foi inserida
+      return;
+    }
+
+    //push guessed letter or remove a guess
+    if (letters.includes(normalizedLetter)) {
+      setGuessedLetters((actualGuessedLetters) => [ //vê se a letra inserida tem dentro da palavra 
+        ...actualGuessedLetters,
+        normalizedLetter,
+      ]);
+    } else {
+      setWrongLetters((actualWrongLetters) => [ //se nao estiver, a letra esta errada
+        ...actualWrongLetters,
+        normalizedLetter,
+      ]);
+    } 
+
   }
-
+  
+  console.log(wrongLetters, guessedLetters);
+  
   //Restart game
   const restartGame = () => {
     setGameStage(stages[0].name)
