@@ -9,24 +9,34 @@ function App() {
 
   const[products, setProducts] = useState([]);
 
-    //1- Resgatando dados(fetch)
-    useEffect(async() => {
+  //1- Resgatando dados(fetch)
+  const fetchProducts = async () => { //uma função assincrona
+    try {
+      const response = await fetch(url);
+      const data = await response.json(); // O tipo de data é 'any', deixa de ser um json
+      setProducts(data);
+    } 
+    catch (error) {
+      console.error(error);
+    }
+  };
 
-        const response = await fetch(url) //pega os dados de dentro da url
+    useEffect(() => {
+      fetchProducts(); // Chama a função assíncrona
+    }, []);
 
-        const data = await response.json() //pega os dados json e transforma em objeto
-
-        setProducts(data) //seta os dados
-      
-        //é feito dentro do useEffect para chamar a requisição só uma vez
-    }, [])
-
-    console.log(products)
+    console.log(products) 
 
 
   return (
     <>
         <h1>Lista de Produtos</h1>
+        <ul>
+          {products.map((product) => (
+            <li key={product.id}>{product.name} - R$ {product.price}</li>
+          ))}
+
+        </ul>
     </>
   )
 }
