@@ -8,6 +8,9 @@ export const useFetch = (url: string) => {
 
     const [data, setData] = useState('');
 
+    //6- loading
+    const [loading, setLoading] = useState(false);
+
     //5- refatorando post no custom hook
     // const [config, setConfig] = useState();
     // const [method, setMethod] = useState();
@@ -31,9 +34,14 @@ export const useFetch = (url: string) => {
 
         const fetchData = async () => {
             
+            //6- loading
+            setLoading(true)
+
             const response = await fetch(url)
             const data = await response.json();
             setData(data);
+
+            setLoading(false)
         }
 
         fetchData();
@@ -59,5 +67,5 @@ export const useFetch = (url: string) => {
         //     httpRequest(); 
         // }, [config])
 
-    return { data };
+    return { data, loading };
 }

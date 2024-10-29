@@ -13,7 +13,7 @@ function App() {
   const[price, setPrice] = useState('');
 
   //4- custom hook
-  const {data: item} = useFetch(url); //retorna todo a lista do json em um objeto chamado item, dessa forma só utilizar ele para puxar algo
+  const {data: item, loading} = useFetch(url); //retorna todo a lista do json em um objeto chamado item, dessa forma só utilizar ele para puxar algo
 
   //1- Resgatando dados(fetch)
   const fetchProducts = async () => { //uma função assincrona
@@ -81,6 +81,7 @@ function App() {
   return (
     <>
         <h1>Lista de Produtos</h1>
+        {loading && (<p>Carregando dados</p>)}
         <ul>
           {products.map((product) => (
             <li key={product.id}>{product.name} - R$ {product.price}</li>
