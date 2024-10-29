@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import './App.css'
+import {useFetch} from './hooks/useFetch'
 
 const url = 'http://localhost:3000/products'
 
@@ -10,6 +11,9 @@ function App() {
   const[products, setProducts] = useState([]);
   const [name, setName] = useState('');
   const[price, setPrice] = useState('');
+
+  //4- custom hook
+  const {data: item} = useFetch(url); //retorna todo a lista do json em um objeto chamado item, dessa forma só utilizar ele para puxar algo
 
   //1- Resgatando dados(fetch)
   const fetchProducts = async () => { //uma função assincrona
