@@ -33,18 +33,36 @@ function App() {
         price: price
       }
 
-      const reponse = await fetch(url, {
+      const response = await fetch(url, {
         method: "POST",
         headers: {
         "Content-Type": "application/json"
         },
         body: JSON.stringify(product)
 
+        
+        
       });
+      //3 - carregamento dinâmico
+      const addedProduct = await response.json() //pega o valor do novo json 
+      setProducts((prevProducts) =>   [...prevProducts, addedProduct]) //adiciona no state
+      setName('')
+      setPrice('')
+
+      //Meu jeito
+        // Após adicionar o produto, buscar a lista atualizada
+        //fetchProducts();
+        // Limpar os inputs
+        //setName('');
+        //setPrice('');
+
     }
     catch(error){
       console.log(error)
     }
+
+
+
   }
 
 
@@ -54,7 +72,6 @@ function App() {
       fetchProducts(); // Chama a função assíncrona
     }, []);
 
-    console.log(products) 
 
 
   return (
