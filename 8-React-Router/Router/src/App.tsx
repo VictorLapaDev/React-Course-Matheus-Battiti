@@ -5,7 +5,7 @@ import './App.css'
 import { Routes, BrowserRouter, Route } from 'react-router-dom'
 import Home from './pages/home/Home'
 import About from './pages/about/About'
-import NavBar from './assets/components/NavBar/NavBar'
+import NavBar from './components/NavBar/NavBar'
 
 function App() {
 
