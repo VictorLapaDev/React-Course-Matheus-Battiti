@@ -2,6 +2,7 @@ import './Home.css'
 import '../../hooks/useFetch'
 import axios, { Axios } from 'axios'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 
 const Home = () => {
@@ -32,8 +33,11 @@ const Home = () => {
       <ul className='people'>
 
       {data.map((item: object) => (
-        <li key={item.id}>Nome: {item.name}, Idade: {item.age}</li>
-      ))}
+        <li key={item.id}>Nome: {item.name}, Idade: {item.age}
+        {/* 4- rota dinamica */}
+        <Link to={`/people/${item.id}`}>Detalhes</Link>
+        </li>
+      ))} 
 
     </ul>
 
