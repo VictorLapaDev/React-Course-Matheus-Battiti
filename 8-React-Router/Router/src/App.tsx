@@ -2,7 +2,7 @@ import './App.css'
 
 
 //1- config react-router
-import { Routes, BrowserRouter, Route } from 'react-router-dom'
+import { Routes, BrowserRouter, Route, Navigate } from 'react-router-dom'
 import Home from './pages/home/Home'
 import About from './pages/about/About'
 import NavBar from './components/NavBar/NavBar'
@@ -34,6 +34,9 @@ function App() {
 
           {/* 7- not found(404) */}
           <Route path='*' element={<NotFound/>}/>
+
+          {/* 10- redirect */}
+          <Route path={'/company'} element={<Navigate to='/about'/>}/> {/* Quando acessado a rota /company, ele direcionará para /about, usado em caso de mudanças de urls */}
 
           {/* 9- search */}
           <Route path='/search' element={<SearchPage/>}/>
