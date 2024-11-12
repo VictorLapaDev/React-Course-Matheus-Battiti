@@ -8,6 +8,7 @@ import About from './pages/about/About'
 import NavBar from './components/NavBar/NavBar'
 import Person from './pages/person/Person'
 import Info from './pages/info/Info'
+import NotFound from './pages/notFound/NotFound'
 
 function App() {
 
@@ -23,11 +24,14 @@ function App() {
           
           {/* 6- nested routes */}
           <Route path='/people/:id/info' element={<Info/>}/>
-          
+
           {/* 4- rota dinamica */}
           <Route path='/people/:id' element={<Person/>}/>
 
-/     </Routes>
+          {/* 7- not found(404) */}
+          <Route path='*' element={<NotFound/>}/>
+
+     </Routes>
      </BrowserRouter>
     </>
   )
