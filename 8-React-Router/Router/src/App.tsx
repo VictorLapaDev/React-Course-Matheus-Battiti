@@ -9,6 +9,8 @@ import NavBar from './components/NavBar/NavBar'
 import Person from './pages/person/Person'
 import Info from './pages/info/Info'
 import NotFound from './pages/notFound/NotFound'
+import Search from './components/search/Search'
+import SearchPage from './pages/search/SearchPage'
 
 function App() {
 
@@ -18,6 +20,8 @@ function App() {
 
      <BrowserRouter>
        <NavBar/>{/* Como tem componentes do react router ele tem que ser renderizado aqui  */}
+       {/* 9- search */}
+       <Search/>
       <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/about' element={<About/>}/>
@@ -30,6 +34,9 @@ function App() {
 
           {/* 7- not found(404) */}
           <Route path='*' element={<NotFound/>}/>
+
+          {/* 9- search */}
+          <Route path='/search' element={<SearchPage/>}/>
 
      </Routes>
      </BrowserRouter>
