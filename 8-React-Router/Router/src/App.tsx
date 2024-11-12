@@ -7,6 +7,7 @@ import Home from './pages/home/Home'
 import About from './pages/about/About'
 import NavBar from './components/NavBar/NavBar'
 import Person from './pages/person/Person'
+import Info from './pages/info/Info'
 
 function App() {
 
@@ -19,6 +20,10 @@ function App() {
       <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/about' element={<About/>}/>
+          
+          {/* 6- nested routes */}
+          <Route path='/people/:id/info' element={<Info/>}/>
+          
           {/* 4- rota dinamica */}
           <Route path='/people/:id' element={<Person/>}/>
 

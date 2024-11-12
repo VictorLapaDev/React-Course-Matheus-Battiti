@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import './Person.css'
 import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -32,6 +32,9 @@ const Person = () => {
       <h2>Id da pessoa {id}</h2>
       <p>Nome: {person.name}</p>
       <p>Idade: {person.age}</p>
+
+      {/* 6- nested routes */}
+      <Link to={`/people/${person.id}/info`}>Mais informações</Link>
     </div>
   )
 }
