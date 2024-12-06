@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom"
-import '../NavBar.css'
+import './NavBar.css'
 const NavBar = () => {
   return (
     <div className="navbar">
 
-        <h2>NavBar</h2>
+        <h2>ContextApi</h2>
 
         <nav>
             <NavLink to={'/'}  className={( { isActive }) => (isActive ? 'ativo' : 'naoAtivo')}>
