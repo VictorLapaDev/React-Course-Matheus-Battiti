@@ -3,7 +3,7 @@
 // import { CounterContext } from "./CounterContext";
 
 //4- refatorando com hook
-import { useCounterContext } from "../../hooks/useCounterContext"
+import { useCounterContext } from "../hooks/useCounterContext"
 
 
 const ChangeCouter = () => {
