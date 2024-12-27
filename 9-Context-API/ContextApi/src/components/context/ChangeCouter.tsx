@@ -1,11 +1,14 @@
 // 3- alterando contexto
-import { useContext } from "react";
+// import { useContext } from "react";
+// import { CounterContext } from "./CounterContext";
 
-import { CounterContext } from "./CounterContext";
+//4- refatorando com hook
+import { useCounterContext } from "../../hooks/useCounterContext"
 
 
 const ChangeCouter = () => {
-    const {counter, setCounter} =   useContext(CounterContext)
+    // const { counter, setCounter } = useContext(CounterText);
+    const {counter, setCounter} =   useCounterContext();
 
   return (
     <div>
