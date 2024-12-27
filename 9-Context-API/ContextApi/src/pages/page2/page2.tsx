@@ -14,7 +14,12 @@ const Page2 = () => {
   // const {counter} = useContext(CounterContext)
   const { counter } = useCounterContext();
   //5- contexto mais complexo
-  const { color } = useTitleColorContext();
+  const { color, dispatch } = useTitleColorContext();
+
+  //6- alterando context complexo
+  const setTitleColor = (color) => {
+    dispatch({type: color})
+  }
 
   return (
     <div>
@@ -27,6 +32,12 @@ const Page2 = () => {
 
       {/*5- Contexto mais complicado */}
       <p style={{color: color}}>Cor do titulo</p>
+
+      {/*6- alterando context complexo */}
+      <div>
+          <button onClick={() => setTitleColor('RED')}>Vermelho</button>
+          <button onClick={() => setTitleColor('BLUE')}>Azul</button>
+      </div>
     </div>
   )
 }
