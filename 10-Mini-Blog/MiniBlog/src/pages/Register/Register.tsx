@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Register.module.css";
 import { Eye, EyeOff } from "lucide-react";
+import { useAuthentication } from "../../hooks/useAuthentication";
 
 const Register = () => {
   const [displayName, setDisplayName] = useState("");
@@ -11,7 +12,9 @@ const Register = () => {
 
   const [visible, setVisible] = useState(false);
 
-  const habdleSubmit = (e: React.FormEvent) => {
+  const {createUser, error: authError, loading} = useAuthentication();
+
+  const habdleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     setError("");
@@ -27,8 +30,19 @@ const Register = () => {
       return;
     }
 
+
+    const res = await createUser(email, password, displayName);
+
     console.log(user);
   };
+
+
+  useEffect(() => {
+    if(authError) {
+      setError(authError);
+    }
+  }, [authError])
+
 
   const handleVisibilityToggle = () => {
     setVisible(!visible);
@@ -95,9 +109,19 @@ const Register = () => {
             </button>
           </div>
         </label>
-        <button className="btn" type="submit">
-          Cadastrar
-        </button>
+
+        {!loading && (
+           <button className="btn" type="submit">
+           Cadastrar
+          </button>
+        ) }
+
+        {loading && (
+          <button className="btn" type="submit" disabled>
+            Aguarde...
+          </button>
+        )}
+       
         {error && <p className="error">{error}</p>}
       </form>
     </div>
