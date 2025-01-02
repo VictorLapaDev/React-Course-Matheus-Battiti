@@ -73,7 +73,7 @@ const Register = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            <button onClick={handleVisibilityToggle}>
+            <button onClick={handleVisibilityToggle} type="button">
               {visible ? <EyeOff /> : <Eye />}
             </button>
           </div>
@@ -90,7 +90,7 @@ const Register = () => {
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
 
-            <button onClick={handleVisibilityToggle}>
+            <button onClick={handleVisibilityToggle} type="button">
               {visible ? <EyeOff /> : <Eye />}
             </button>
           </div>
