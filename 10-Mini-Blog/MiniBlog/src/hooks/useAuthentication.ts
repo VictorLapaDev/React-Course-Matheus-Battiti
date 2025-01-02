@@ -54,7 +54,7 @@ export const useAuthentication = () => {
     finally {
       setLoading(false);
     }
-    
+
   };
 
   useEffect(() => {
