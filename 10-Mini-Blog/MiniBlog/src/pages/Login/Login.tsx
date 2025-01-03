@@ -14,7 +14,7 @@ const Login = () => {
   const [visible, setVisible] = useState(false);
 
 
-  const {createUser, error: authError, loading} = useAuthentication(); //nao vai precisar
+  const {login, error: authError, loading} = useAuthentication(); 
   
     const habdleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
@@ -27,7 +27,7 @@ const Login = () => {
       };
   
   
-      // const res = await createUser(email, password, );
+       const res = await login(email, password, );
   
       console.log(user);
     };

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { auth } from "../firebase/config"; // Import the initialized auth
-import { createUserWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 
 export const useAuthentication = () => {
   const [error, setError] = useState<string | null>(null);
@@ -14,6 +14,7 @@ export const useAuthentication = () => {
       return;
     }
   }
+
   //register
   const createUser = async (
     email: string,
@@ -66,6 +67,40 @@ export const useAuthentication = () => {
   }
 
 
+  //login
+  const login = async (email: string, password: string) => {
+
+    checkIfCancelled();
+
+    setLoading(true);
+    setError(null);
+    
+    try{
+      await signInWithEmailAndPassword(auth, email, password);
+    }
+    catch(error) {
+      console.log(error.message);
+
+      let systemErrorMessage;
+      if (error.message.includes("user-not-found")) {
+        systemErrorMessage = "Usuário não encontrado";
+      } else if (error.message.includes("invalid-credential")) {
+        systemErrorMessage = "Credencial inválida, verifique o email e a senha";
+      } else if(error.message.includes("invalid-email")) {
+        systemErrorMessage = "Email inválido";
+      }
+       else {
+        systemErrorMessage = "Ocorreu um erro inesperado";
+      }
+
+      setError(systemErrorMessage);
+
+    }
+    finally {
+      setLoading(false);
+    }
+  }
+
   useEffect(() => {
     return () => {
       setCancelled(true);
@@ -77,6 +112,7 @@ export const useAuthentication = () => {
     createUser,
     error,
     loading,
-    logout
+    logout,
+    login
   };
 };
