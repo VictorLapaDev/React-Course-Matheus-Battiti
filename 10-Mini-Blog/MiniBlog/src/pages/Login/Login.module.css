@@ -1,0 +1,30 @@
+.login{
+    text-align: center;
+}
+
+.login a{
+    color: #aaa;
+}
+
+.inputArea {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+
+.inputArea input {
+    box-sizing: border-box;
+    border: none;
+    padding: 0.8em 0em;
+    background-color: transparent;
+}
+
+.inputArea button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
