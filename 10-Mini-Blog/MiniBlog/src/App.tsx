@@ -9,7 +9,7 @@ import { useAuthentication } from "./hooks/useAuthentication.js";
 //context
 import { AuthProvider } from "./context/AuthContext.jsx";
 
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 //pages
 import Home from "./pages/Home/Home";
@@ -22,21 +22,19 @@ import CreatePost from "./pages/CreatePost/CreatePost.js";
 import Dashboard from "./pages/Dashboard/Dashboard.js";
 
 function App() {
-
   const [user, setUser] = useState(undefined);
   const { auth } = useAuthentication();
-
 
   const loadingUser = user === undefined;
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       setUser(user);
-    })
-  }, [auth])
+    });
+  }, [auth]);
 
-  if(loadingUser) {
-    return <h1>Loading...</h1>
+  if (loadingUser) {
+    return <h1>Loading...</h1>;
   }
   return (
     <>
@@ -46,10 +44,22 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/posts/create" element={<CreatePost/>} />
-            <Route path="/dashboard" element={<Dashboard/>} />
+            <Route
+              path="/login"
+              element={!user ? <Login /> : <Navigate to={"/"} />}
+            />
+            <Route
+              path="/register"
+              element={!user ? <Register /> : <Navigate to={"/"} />}
+            />
+            <Route
+              path="/posts/create"
+              element={user ? <CreatePost /> : <Navigate to={"/login"} />}
+            />
+            <Route
+              path="/dashboard"
+              element={user ? <Dashboard /> : <Navigate to={"/login"} />}
+            />
           </Routes>
         </div>
         <Footer />
