@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { auth } from "../firebase/config"; // Import the initialized auth
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 
 export const useAuthentication = () => {
   const [error, setError] = useState<string | null>(null);
@@ -14,7 +14,7 @@ export const useAuthentication = () => {
       return;
     }
   }
-
+  //register
   const createUser = async (
     email: string,
     password: string,
@@ -57,6 +57,15 @@ export const useAuthentication = () => {
 
   };
 
+  //logout
+  const logout = () => {
+
+    checkIfCancelled();
+
+    signOut(auth);
+  }
+
+
   useEffect(() => {
     return () => {
       setCancelled(true);
@@ -68,5 +77,6 @@ export const useAuthentication = () => {
     createUser,
     error,
     loading,
+    logout
   };
 };
