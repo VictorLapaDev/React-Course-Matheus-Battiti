@@ -18,6 +18,8 @@ import NavBar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
 import Register from "./pages/Register/Register";
 import Login from "./pages/Login/Login";
+import CreatePost from "./pages/CreatePost/CreatePost.js";
+import Dashboard from "./pages/Dashboard/Dashboard.js";
 
 function App() {
 
@@ -46,6 +48,8 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/posts/create" element={<CreatePost/>} />
+            <Route path="/dashboard" element={<Dashboard/>} />
           </Routes>
         </div>
         <Footer />
