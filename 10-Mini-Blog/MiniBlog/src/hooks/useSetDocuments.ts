@@ -1,4 +1,4 @@
-import { useState, useEffect, useReducer, act } from "react";
+import { useState, useEffect, useReducer } from "react";
 import { db } from "../firebase/config";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 
@@ -11,51 +11,51 @@ const insertReducer = (state, action) => {
   switch (action.type) {
     case "LOADING":
       return { loading: true, error: null };
+    case "INSERTED_DOC":
+      return { loading: false, error: null };
     case "ERROR":
       return { loading: false, error: action.payload };
-    case "INSERT_DOC":
-      return { loading: false, error: null };
     default:
       return state;
   }
 };
 
-export const useSetDocuments = (docCollection) => {
+export const useInsertDocument = (docCollection) => {
   const [response, dispatch] = useReducer(insertReducer, initialState);
 
-  //deal with the memory leak
-  const [canceled, setCanceled] = useState(false);
+  // deal with memory leak
+  const [cancelled, setCancelled] = useState(false);
 
-  const checkCanceledBeforeDispatch = () => {
-    if (!canceled) {
+  const checkCancelBeforeDispatch = (action) => {
+    if (!cancelled) {
       dispatch(action);
     }
   };
 
-  const insertDocument = async (doc) => {
-    try {
-      checkCanceledBeforeDispatch({ type: "LOADING" });
+  const insertDocument = async (document) => {
+    checkCancelBeforeDispatch({ type: "LOADING" });
 
+    try {
       const newDocument = { ...document, createdAt: Timestamp.now() };
 
-      const insertDocument = await addDoc(
+      const insertedDocument = await addDoc(
         collection(db, docCollection),
         newDocument
       );
 
-      checkCanceledBeforeDispatch({
+      checkCancelBeforeDispatch({
         type: "INSERTED_DOC",
-        payload: insertDocument,
+        payload: insertedDocument,
       });
     } catch (error) {
-      checkCanceledBeforeDispatch({ type: "ERROR", payload: error.message });
+      checkCancelBeforeDispatch({ type: "ERROR", payload: error.message });
     }
   };
 
   useEffect(() => {
-    return () => {
-      setCanceled(true);
-    };
+    return () => setCancelled(true);
   }, []);
-  return insertDocument, response;
+
+  return { insertDocument, response };
 };
+
