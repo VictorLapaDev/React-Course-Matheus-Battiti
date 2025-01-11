@@ -20,20 +20,23 @@ const CreatePost = () => {
     setFormError("");
 
     // Validação da URL da imagem
-    const imageRegex = /(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))/i;
+    const imageRegex = /^https:\/\//i;
     if (!imageRegex.test(image)) {
       setFormError("A URL da imagem não é válida.");
       return;
     }
 
     // Converter tags em array
-    const tagsArray = tags.split(',').map(tag => tag.trim());
+    const tagsArray = tags.split(',').map(tag => tag.trim().toLocaleLowerCase());
 
-    // Verificar se todos os campos estão preenchidos
-    if (!title || !image || !body || tagsArray.length === 0) {
-      setFormError("Por favor, preencha todos os campos.");
+    //verificando todos os campos
+    if (!title || !image || !body || !tags) {
+      setFormError("Preencha todos os campos.");
       return;
     }
+
+    // Verificar se mao há erro no formulário
+    if (formError) return ;
 
     // Inserir documento
     insertDocument({
