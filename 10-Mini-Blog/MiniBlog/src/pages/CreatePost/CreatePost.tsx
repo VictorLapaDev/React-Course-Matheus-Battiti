@@ -20,30 +20,31 @@ const CreatePost = () => {
     setFormError("");
 
     // Validação da URL da imagem
-    // const imageRegex = /(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))/i;
-    // if (!imageRegex.test(image)) {
-    //   setFormError("A URL da imagem não é válida.");
-    //   return;
-    // }
+    const imageRegex = /(https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp))/i;
+    if (!imageRegex.test(image)) {
+      setFormError("A URL da imagem não é válida.");
+      return;
+    }
 
     // Converter tags em array
-    // const tagsArray = tags.split(',').map(tag => tag.trim());
+    const tagsArray = tags.split(',').map(tag => tag.trim());
 
     // Verificar se todos os campos estão preenchidos
-    // if (!title || !image || !body || tagsArray.length === 0) {
-    //   setFormError("Por favor, preencha todos os campos.");
-    //   return;
-    // }
+    if (!title || !image || !body || tagsArray.length === 0) {
+      setFormError("Por favor, preencha todos os campos.");
+      return;
+    }
 
     // Inserir documento
     insertDocument({
       title,
       image,
       body,
-      tags,
-      uid: user.uid,
-      createdBy: user.displayName, // Corrigido
+      tags: tagsArray,
+      uid: user.user.uid,
+      createdBy: user.user.displayName, // Corrigido
     });
+    
 
     // Redirecionar após inserção bem-sucedida
     if (!response.loading && !response.error) {
