@@ -35,7 +35,7 @@ const Home = () => {
         {posts && posts.length === 0 && (
           <div className={style.noPosts}>
             <p>Não foram encontrados posts</p>
-            <Link className='btn' to="/create-post">Crie o primeiro post</Link>
+            <Link className='btn' to="/posts/create">Crie o primeiro post</Link>
           </div>
         )}
       </div>
