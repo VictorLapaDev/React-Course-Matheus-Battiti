@@ -2,7 +2,7 @@
 import style from "./Home.module.css";
 
 //hooks
-import { Link } from "react-router-dom";
+import { Link, useNavigate,} from "react-router-dom";
 import { useState } from "react";
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 
@@ -11,16 +11,23 @@ import PostDetails from "../../components/PostDetails/PostDetails";
 
 const Home = () => {
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   const { documents: posts, loading } = useFetchDocuments("posts"); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if(search){
+      return navigate(`/search?q=${search}`);
+    }
+
   };
 
   return (
     <div className={style.home}>
       <h1>Veja nossos posts mais recentes</h1>
+
       <form className={style.search_form} onSubmit={handleSubmit}>
         <input
           type="text"
