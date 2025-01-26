@@ -1,4 +1,4 @@
-import style from "./Dashboard.module.css";
+import styles from "./Dashboard.module.css";
 
 //hooks
 import { useAuthValue } from "../../context/AuthContext";
@@ -19,28 +19,33 @@ const Dashboard = () => {
   if(loading){
     return <p>Carregando...</p>
   }
+
   return (
-    <div>
+    <div className={styles.dashboard}>
       <h2>Dashboard</h2>
       <p>Gerencie seus posts</p>
 
       {posts && posts.length === 0 ? (
-        <div className={style.nopost}>
+        <div className={styles.nopost}>
           <p>Não foram encontrados posts</p>
           <Link to="/posts/create" className="btn">
             Crie seu primeio post
           </Link>
         </div>
       ) : (
-        <div>
-          <div>
+        <div className={styles.showPost}>
+
+          <div className={styles.post_header}>
             <span>Titulo</span>
             <span>Ações</span>
           </div>
+
           {posts &&
             posts.map((post) => (
-              <div key={post.id}>
+              <div key={post.id} className={styles.post_row}>
+
                 <p>{post.title}</p>
+
                 <div>
                   <Link to={`/posts/${post.id}`} className="btn btn-outline">
                     Ver post
@@ -52,8 +57,11 @@ const Dashboard = () => {
                     Excluir
                   </button>
                 </div>
+
               </div>
             ))}
+
+            
         </div>
       )}
 
