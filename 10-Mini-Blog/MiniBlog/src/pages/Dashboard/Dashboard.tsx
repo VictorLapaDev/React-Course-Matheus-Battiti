@@ -11,14 +11,15 @@ const Dashboard = () => {
   const uid = user.uid;
 
   //posts do usuario
-  const posts = []
-
+  const {documents: posts, loading} = useFetchDocuments("posts", null, uid);
 
 
   return (
     <div>
         <h2>Dashboard</h2>
         <p>Gerencie seus posts</p>
+
+
 
         {posts && posts.length === 0 ? (
             <div className={style.nopost}>
@@ -29,10 +30,15 @@ const Dashboard = () => {
             </div>
         ) : (
           <div>
-            
+            <p>Tem posts!!!</p>
           </div>
         )}
 
+        {loading && <p>Carregando posts...</p>}
+
+        {posts && posts.map((post) => (
+              <p key={post}>{post.title} </p>
+            ))}
     </div>
   )
 }
