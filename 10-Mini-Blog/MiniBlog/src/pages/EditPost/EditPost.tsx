@@ -2,8 +2,8 @@ import style from "./EditPost.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuthValue } from "../../context/AuthContext";
-import { useInsertDocument } from "../../hooks/useSetDocuments";
 import { useFetchDocument } from "../../hooks/useFetchDocument";
+import { useUpdateDocument } from "../../hooks/useUpdateDocument";
 
 const EditPost = () => {
   const { id } = useParams();
@@ -28,8 +28,10 @@ const EditPost = () => {
   }, [post]);
 
   const user = useAuthValue(); // Chamada correta do hook
+
   const navigate = useNavigate();
-  const { insertDocument, response } = useInsertDocument("posts");
+
+  const { updateDocument, response } = useUpdateDocument("posts");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,22 +55,25 @@ const EditPost = () => {
       return;
     }
 
-    // Verificar se mao há erro no formulário
+    // Verificar se nao há erro no formulário
     if (formError) return;
 
-    // Inserir documento
-    insertDocument({
-      title,
-      image,
-      body,
-      tags: tagsArray,
-      uid: user.user.uid,
-      createdBy: user.user.displayName, // Corrigido
-    });
+    //cria um objeto atualizadpo para depois jogar para o hook
+    const data = {
+        title,
+        image,
+        body,
+        tags: tagsArray,
+        uid: user.user.uid,
+        createdBy: user.user.displayName, 
+      }
+
+    // Inserir documento atualizado
+    updateDocument(id, data);
 
     // Redirecionar após inserção bem-sucedida
     if (!response.loading && !response.error) {
-      navigate("/"); // Redirecionar para a página inicial
+      navigate("/dashboard"); 
     }
   };
 
