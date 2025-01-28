@@ -3,6 +3,7 @@ import styles from "./Dashboard.module.css";
 //hooks
 import { useAuthValue } from "../../context/AuthContext";
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
+import { useDeleteDocument } from "../../hooks/useDeleteDocument";
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
@@ -11,10 +12,8 @@ const Dashboard = () => {
 
   //posts do usuario
   const { documents: posts, loading } = useFetchDocuments("posts", null, uid);
+  const { deleteDocument } = useDeleteDocument("posts")
 
-  const deleteDocument = (id) => {
-
-  }
 
   if(loading){
     return <p>Carregando...</p>
