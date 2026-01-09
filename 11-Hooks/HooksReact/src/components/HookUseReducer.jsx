@@ -1,4 +1,4 @@
-import { useReducer } from 'react'
+import { useReducer, useState } from 'react'
 
 const HookUseReducer = () => {
 
@@ -13,11 +13,61 @@ const HookUseReducer = () => {
         return Math.random(state)
     })
 
+    // 2 - useReducer com actions
+    const initialTasks = [
+        {id: 1, texto: "qualquer coisa 1"},
+        {id: 2, texto: "feijão com manga"}
+    ]
+
+    const tasksReducer = (state, action) => {
+        switch(action.type){
+            case "ADD": {
+
+                const newTask = {
+                    id: Math.random(),
+                    text: taskText
+            };
+
+
+            setTaskText("");
+
+            return [...state, newTask];
+        }
+            case "DELETE":{
+                return state.filter((tasks) => tasks.id !== action.id)
+            }
+            default:{
+                return state;
+            }
+        }
+    }
+
+    const [taskText, setTaskText] = useState("");
+    const [tasks, dispatchTasks] = useReducer(tasksReducer, initialTasks);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        dispatchTasks({type: "ADD"})
+    }
+
+    const removeTask = (id) => {
+        dispatchTasks({type: "DELETE", id})
+    }
+
   return (
     <div>
         <h2>useReducer</h2>
         <p>Número: {number}</p>
         <button onClick={dispatch}>Mudar Número</button>
+        <h3>Tasks:</h3>
+        <form onSubmit={handleSubmit}>
+            <input type="text" value={taskText} onChange={(e) => setTaskText(e.target.value)}/> 
+            <input type="submit" value="Enviar"/>
+        </form>
+        {tasks.map((tasks) => (
+            <li onDoubleClick={() => removeTask(tasks.id)} key={tasks.id}>Texto: {tasks.texto}</li>
+        ))}
         <hr />
     </div>
   )
