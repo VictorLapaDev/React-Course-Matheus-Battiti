@@ -27,6 +27,16 @@ const HookUseEffect = () => {
     }, [otherNum]);
 
     
+    // 4 - cleanup do useEffect
+    useEffect(() => {
+        // const timer = setTimeout(() => {
+        //     console.log("Hello WOrld");
+            
+        // }, 2000) //executa mesmo em outras paginas, o que pode gerar erros no projeto
+
+        // //return () => clearTimeout(timer); //para o timeout e faz um cleanup no hook 
+    }, [otherNum])
+
 
     //Detalhe, o useEffect é sempre executado ao carregar a página, independente de qual tipo você utilizar.
 
