@@ -3,7 +3,7 @@ import './App.css'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
 //useContext
-import { HookUseContext } from './components/HookUseContext'
+import { HookUseContextProvider } from './components/HookUseContext'
 
 //pages
 import Home from './pages/Home'
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-    <HookUseContext>
+    <HookUseContextProvider>
 
       <h1>React Hooks</h1>
       <BrowserRouter>
@@ -31,7 +31,7 @@ function App() {
         </Routes>
       </BrowserRouter> 
 
-    </HookUseContext>
+    </HookUseContextProvider>
     </>
   )
 }
