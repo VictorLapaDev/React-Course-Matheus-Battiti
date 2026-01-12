@@ -1,12 +1,13 @@
-import React from 'react'
+//useContext
+import { useContext } from 'react'
+import { SomeContext } from '../components/HookUseContext'
+
 import HookUseState from '../components/hookUseState'
 import HookUseReducer from '../components/HookUseReducer'
 import HookUseEffect from '../components/HookUseEffect'
 import HookUseRef from '../components/HookUseRef'
+import HookUseCallback from '../components/HookUseCallback'
 
-//useContext
-import { useContext } from 'react'
-import { SomeContext } from '../components/HookUseContext'
 
 const Home = () => {
 
@@ -21,6 +22,7 @@ const Home = () => {
         <p>Valor do contexto: {contextValue}</p>
         <hr />
         <HookUseRef/>
+        <HookUseCallback/>
     </div>
   )
 }
