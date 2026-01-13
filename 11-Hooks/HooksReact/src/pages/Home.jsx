@@ -7,6 +7,7 @@ import HookUseReducer from '../components/HookUseReducer'
 import HookUseEffect from '../components/HookUseEffect'
 import HookUseRef from '../components/HookUseRef'
 import HookUseCallback from '../components/HookUseCallback'
+import HookUseMemo from '../components/HookUSeMemo'
 
 
 const Home = () => {
@@ -23,6 +24,7 @@ const Home = () => {
         <hr />
         <HookUseRef/>
         <HookUseCallback/>
+        <HookUseMemo/>
     </div>
   )
 }
