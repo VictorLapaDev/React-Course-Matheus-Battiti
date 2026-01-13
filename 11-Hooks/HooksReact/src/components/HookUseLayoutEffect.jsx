@@ -21,3 +21,5 @@ const HookUseLayoutEffect = () => {
 
     // 4. Aqui, este console.log será executado **em cada renderização** do componente
     console.log(name)
+}
+export default HookUseLayoutEffect
