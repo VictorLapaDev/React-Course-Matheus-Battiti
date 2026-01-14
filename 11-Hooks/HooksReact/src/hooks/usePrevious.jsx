@@ -1,10 +1,13 @@
-import { useEffect, useRef } from "react";
+import { useDebugValue, useEffect, useRef } from "react";
 
 export const usePrevious = (value) => {
 
   // useRef cria um objeto persistente entre renderizações
   // ref.current NÃO causa re-render quando muda
   const ref = useRef();
+
+  useDebugValue(" ---- CUSTOM HOOK & USEDEBUGVALUE ----")
+  useDebugValue("O número anterior é: " + ref)
 
   // useEffect roda após a renderização
   // Aqui salvamos o valor atual para ser o "anterior"
