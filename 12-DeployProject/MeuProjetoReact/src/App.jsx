@@ -1,5 +1,5 @@
 import { useState } from "react";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   Check,
@@ -8,41 +8,51 @@ import {
   Star,
   Shield,
   Zap,
-  Sparkles
+  Sparkles,
 } from "lucide-react";
 
 const navLinks = [
-  {href: "#features", label: "Recursos"},
-  {href: "#testmonials", label: "Depoimentos"},
-  {href: "#pricing", label: "Preços"},
-  {href: "#faq", label: "FAQ"},
-]
+  { href: "#features", label: "Recursos" },
+  { href: "#testmonials", label: "Depoimentos" },
+  { href: "#pricing", label: "Preços" },
+  { href: "#faq", label: "FAQ" },
+];
 
 function App() {
-
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="bg-slate-950 text-slate-100 selection:bg-fuchsia-500/30">
-
       {/* NavBar */}
 
-      <header className="sticky top-0 z-40 border-b border-white/5" >
+      <header className="sticky top-0 z-40 border-b border-white/5">
         <div className="mx-auto max-w-6xl px-4 py-4 flex justify-between items-center">
           <a href="" className="flex items-center gap-2">
-            <Sparkles className="size-5 text-fuchsia-400"/>
+            <Sparkles className="size-5 text-fuchsia-400" />
             <span className="font-bold tracking-tight">Minha Marca</span>
           </a>
+
+          {/* Se a tela for pequena ele esconde a nav */}
           <nav className="hidden md:flex items-center gap-6 text-sm">
             {navLinks.map((l) => {
               return (
-                <a className="hover:text-fuchsia-300 transition" key={l.href} href={l.href}>{l.label}</a>
-              )
+                <a
+                  className="hover:text-fuchsia-300 transition"
+                  key={l.href}
+                  href={l.href}
+                >
+                  {l.label}
+                </a>
+              );
             })}
           </nav>
 
-          <button className="md:hidden p-2 rounded-lg" onClick={() => setOpen(true)}>
-            <Menu className="size-5"/>
+          {/* Se a tela for pequena ele mostra o menu button */}
+          <button
+            className="md:hidden p-2 rounded-lg"
+            onClick={() => setOpen(true)}
+          >
+            <Menu className="size-5" />
           </button>
         </div>
 
@@ -50,40 +60,89 @@ function App() {
         {open && (
           <div className="md:hidden ">
             <div className="fixed bg-black/60" onClick={() => setOpen(false)}>
-
               <div className="fixed right-0 top-0 h-full w-80 bg-slate-900 border-l border-white/10 p-6 ">
-
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
-                    <Sparkles className="size-6 text-fuchsia-400"/>
+                    <Sparkles className="size-6 text-fuchsia-400" />
                     <span className="font-semibold">Minha Marca</span>
                   </div>
-                  <button className="p-2 rounded-lg" onClick={() => setOpen(false)}>
-                    <X className="size-5"/>
+                  <button
+                    className="p-2 rounded-lg"
+                    onClick={() => setOpen(false)}
+                  >
+                    <X className="size-5" />
                   </button>
                 </div>
 
                 <div className="flex flex-col gap-4 bg-slate-900 p4 w-90">
-                   {navLinks.map((l) => {
-                      return (
-                        <a className="text-slate-200" key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
-                      )
-                    })}
-
-
-
-               </div>
+                  {navLinks.map((l) => {
+                    return (
+                      <a
+                        className="text-slate-200"
+                        key={l.href}
+                        href={l.href}
+                        onClick={() => setOpen(false)}
+                      >
+                        {l.label}
+                      </a>
+                    );
+                  })}
+                </div>
               </div>
-              
             </div>
           </div>
         )}
       </header>
 
-      
-      
+      {/* Hero */}
+      <section className="relative overflow-hidden">
+        <div className="mx-auto max-w-6xl px-4 py-20 relative">
+          <motion.h1
+            initial={{ opacity: 0, y: 200 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-6xl font-extrabold"
+          >
+            Acelere sua presença online com uma landing
+            <span className="bg-clip-text text-transparent bg-linear-to-r from-fuchsia-400 to-violet-300">
+              {" "}
+              simples e eficaz
+            </span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 200 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mt-4 text-slate-300 max-w-2xl"
+          >
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla
+            magnam quo labore deserunt nesciunt neque dicta alias eos ad?
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 200 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mt-8 flex flex-row gap-3"
+          >
+            <a
+              href="#"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-fuchsia-600 px-6 py-3 font-medium hover:bg-fuchsia-700 transition"
+            >
+              Comece agora <ArrowRight className="size-4" />
+            </a>
+            <a
+              href="#"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl  px-6 py-3 font-medium border border-white/20 hover:bg-white/5 transition"
+            >
+              Ver recursos
+            </a>
+          </motion.div>
+        </div>
+      </section>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
