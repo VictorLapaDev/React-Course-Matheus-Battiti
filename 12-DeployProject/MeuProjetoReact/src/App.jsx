@@ -203,7 +203,7 @@ function App() {
                 icon: <Star className="size-5 text-amber-400"/>
               }
             ].map((f) => (
-              <div key={f.title} className="rounded-2xl border border-white/10 bg-white/[0.02]  ">
+              <div key={f.title} className="rounded-2xl border p-4 border-white/10 bg-white/[0.02]">
                 <div className="flex items-center gap-3">
                   {f.icon}
                   <p className="font-semibold">{f.title}</p>
