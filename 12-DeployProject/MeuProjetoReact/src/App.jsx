@@ -139,7 +139,33 @@ function App() {
               Ver recursos
             </a>
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 200 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mt-14 grid grid-cols-3 gap-4"
+          >
+            {["Velocidade", "Segurança", "Conversão"].map((label, i) => (
+              <div key={label} className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+
+                <div className="flex items-center gap-3">
+                  {i == 0 && <Zap className="size-5 text-emerald-400"/>}
+                  {i == 1 && <Shield className="size-5 text-sky-400"/>}
+                  {i == 2 && <Star className="size-5 text-amber-400"/>}
+                  <div className="font-semibold">{label}</div>
+                </div>
+
+                <p className="text-sm text-slate-400 mt-2">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam rem sint comm
+                </p>
+
+                </div>
+            ))}
+          </motion.div>
         </div>
+
+
       </section>
     </div>
   );
