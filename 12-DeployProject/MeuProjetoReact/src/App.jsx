@@ -278,10 +278,22 @@ function App() {
             <div className="text-sm text-slate-300  mt-4 flex items-center gap-2">
               <Clock className="size-4 text-amber-400" /> Somente hoje!
             </div>
-            <button className="mt-2 cursor-pointer rounded-2xl bg-fuchsia-600 hover:bg-fuchsia-800 transition px-6 py-3 font-medium">Comprar agora!</button>
+            <button className="mt-2 cursor-pointer rounded-2xl bg-fuchsia-600 hover:bg-fuchsia-800 transition px-6 py-3 font-medium">
+              Comprar agora!
+            </button>
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="border-t border-white/5">
+        <div className="mx-auto max-w-6xl px-4 py-8 flex flex-col items-center">
+          <div className="mb-4">Minha Marca @ {new Date().getFullYear()}</div>
+          <a href="#" className="text-slate-300">
+            Política de Privacidade
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }
