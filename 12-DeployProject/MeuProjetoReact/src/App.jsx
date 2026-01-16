@@ -9,6 +9,7 @@ import {
   Shield,
   Zap,
   Sparkles,
+  Clock,
 } from "lucide-react";
 
 const navLinks = [
@@ -147,20 +148,22 @@ function App() {
             className="mt-14 grid grid-cols-3 gap-4"
           >
             {["Velocidade", "Segurança", "Conversão"].map((label, i) => (
-              <div key={label} className="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-
+              <div
+                key={label}
+                className="rounded-2xl border border-white/10 bg-white/[0.02] p-6"
+              >
                 <div className="flex items-center gap-3">
-                  {i == 0 && <Zap className="size-5 text-emerald-400"/>}
-                  {i == 1 && <Shield className="size-5 text-sky-400"/>}
-                  {i == 2 && <Star className="size-5 text-amber-400"/>}
+                  {i == 0 && <Zap className="size-5 text-emerald-400" />}
+                  {i == 1 && <Shield className="size-5 text-sky-400" />}
+                  {i == 2 && <Star className="size-5 text-amber-400" />}
                   <div className="font-semibold">{label}</div>
                 </div>
 
                 <p className="text-sm text-slate-400 mt-2">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam rem sint comm
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+                  rem sint comm
                 </p>
-
-                </div>
+              </div>
             ))}
           </motion.div>
         </div>
@@ -168,50 +171,57 @@ function App() {
 
       {/* Features */}
       <section id="features" className="mx-auto max-w-6xl px-4 py-8">
-          <h2 className="text-3xl font-bold">Tudo o que você precisa</h2>
-          <p className="text-slate-300 mt-2 max-w-2xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia quibusdam tempore quis maxime dolorum officiis quos qui ipsam aliquid perspiciatis sapiente inventore </p>
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {[
-              {
-                title: "Design Responsivo",
-                desc: "Funciona em qualquer tela!",
-                icon: <Sparkles className="size-5 text-fuchsia-400"/>
-              }, 
-              {
-                title: "Design Responsivo",
-                desc: "Funciona em qualquer tela!",
-                icon: <Star className="size-5 text-amber-400"/>
-              }, 
-              {
-                title: "Design Responsivo",
-                desc: "Funciona em qualquer tela!",
-                icon: <Zap className="size-5 text-emerald-400"/>
-              }, 
-              {
-                title: "Design Responsivo",
-                desc: "Funciona em qualquer tela!",
-                icon: <Shield className="size-5 text-sky-400"/>
-              }, 
-              {
-                title: "Design Responsivo",
-                desc: "Funciona em qualquer tela!",
-                icon: <Sparkles className="size-5 text-fuchsia-400"/>
-              }, 
-              {
-                title: "Design Responsivo",
-                desc: "Funciona em qualquer tela!",
-                icon: <Star className="size-5 text-amber-400"/>
-              }
-            ].map((f, i) => (
-              <div key={i} className="rounded-2xl border p-4 border-white/10 bg-white/[0.02]">
-                <div className="flex items-center gap-3">
-                  {f.icon}
-                  <p className="font-semibold">{f.title}</p>
-                </div>
-                <p className="text-sm text-slate-400 mt-2">{f.desc}</p>
+        <h2 className="text-3xl font-bold">Tudo o que você precisa</h2>
+        <p className="text-slate-300 mt-2 max-w-2xl">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia
+          quibusdam tempore quis maxime dolorum officiis quos qui ipsam aliquid
+          perspiciatis sapiente inventore{" "}
+        </p>
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {[
+            {
+              title: "Design Responsivo",
+              desc: "Funciona em qualquer tela!",
+              icon: <Sparkles className="size-5 text-fuchsia-400" />,
+            },
+            {
+              title: "Design Responsivo",
+              desc: "Funciona em qualquer tela!",
+              icon: <Star className="size-5 text-amber-400" />,
+            },
+            {
+              title: "Design Responsivo",
+              desc: "Funciona em qualquer tela!",
+              icon: <Zap className="size-5 text-emerald-400" />,
+            },
+            {
+              title: "Design Responsivo",
+              desc: "Funciona em qualquer tela!",
+              icon: <Shield className="size-5 text-sky-400" />,
+            },
+            {
+              title: "Design Responsivo",
+              desc: "Funciona em qualquer tela!",
+              icon: <Sparkles className="size-5 text-fuchsia-400" />,
+            },
+            {
+              title: "Design Responsivo",
+              desc: "Funciona em qualquer tela!",
+              icon: <Star className="size-5 text-amber-400" />,
+            },
+          ].map((f, i) => (
+            <div
+              key={i}
+              className="rounded-2xl border p-4 border-white/10 bg-white/[0.02]"
+            >
+              <div className="flex items-center gap-3">
+                {f.icon}
+                <p className="font-semibold">{f.title}</p>
               </div>
-            ))}
-          </div>
+              <p className="text-sm text-slate-400 mt-2">{f.desc}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Depoimentos */}
@@ -219,20 +229,57 @@ function App() {
         <h2 className="text-3xl font-bold">Quem usou, aprovou!</h2>
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
           {[1, 2, 3].map((i) => (
-            <blockquote key={i} className="rounded-2xl border border-white/10 p-6">
+            <blockquote
+              key={i}
+              className="rounded-2xl border border-white/10 p-6"
+            >
               <div className="flex items-center gap-2 text-amber-400">
-                {Array.from({length:5}).map((_, i) => (
-                  <Star key={i} className="size-5 fill-current"/>
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="size-5 fill-current" />
                 ))}
               </div>
               <p className="mt-3 text-slate-300">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos quia facere quo ab quam placeat tempora mollitia saepe. Nos
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
+                quia facere quo ab quam placeat tempora mollitia saepe. Nos
               </p>
               <footer className="mt-3 text-sm text-slate-400">
                 Nome do Cliente
               </footer>
             </blockquote>
           ))}
+        </div>
+      </section>
+
+      {/* Preços */}
+      <section id="pricing" className="mx-auto max-w-6xl px-4 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+          <div>
+            <h2 className="text-3xl font-bold">Plano Único, Sem Complicação</h2>
+            <p className="text-slate-300 mt-6 max-w-2xl">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia
+              quibusdam tempore quis maxime dolorum officiis quos qui ipsam
+              aliquid perspiciatis sapiente inventore{" "}
+            </p>
+            <ul className="mt-4 space-y-2 text-sm text-slate-300">
+              <li className=" flex items-center gap-2">
+                <Check className="size-4 text-emerald-400" /> Beneficio 1
+              </li>
+              <li className=" flex items-center gap-2">
+                <Check className="size-4 text-emerald-400" /> Beneficio 2
+              </li>
+              <li className=" flex items-center gap-2">
+                <Check className="size-4 text-emerald-400" /> Beneficio 3
+              </li>
+            </ul>
+          </div>
+          <div className="rounded-3xl border border-white/10 bg-white/[0.02] p-8">
+            <div className="text-sm text-slate-400">A partir de</div>
+            <div className="text-5xl font-extrabold mt-2">R$ 199,90</div>
+            <div className="text-sm text-slate-300  mt-4 flex items-center gap-2">
+              <Clock className="size-4 text-amber-400" /> Somente hoje!
+            </div>
+            <button className="mt-2 cursor-pointer rounded-2xl bg-fuchsia-600 hover:bg-fuchsia-800 transition px-6 py-3 font-medium">Comprar agora!</button>
+          </div>
         </div>
       </section>
     </div>
