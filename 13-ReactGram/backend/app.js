@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 // Solve cors
-app.use(cors({credentials: true, origin: "http://localhost:5173"})) //onde o front end fica, porta do react vite 5173
+app.use(cors({credentials: true, origin: "http://localhost:5173"})) //onde o front end fica, porta do react vite 5173 //Permite que o frontend acesse o backend mesmo estando em outro domínio/porta
 
 // Upload directory
 app.use("/uploads", express.static(path.join(__dirname, "/uploads")))
