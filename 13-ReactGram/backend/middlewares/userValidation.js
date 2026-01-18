@@ -29,6 +29,20 @@ const userCreateValidation = () => {
   ];
 };
 
+const loginValidate = () => {
+  return [
+    body("email")
+      .isString()
+      .withMessage("Insira seu e-mail.")
+      .isEmail()
+      .withMessage("Insira um e-mail válido."),
+    body("password")
+        .isString()
+        .withMessage("A senha é obrigatória"),
+  ];
+};
+
 module.exports = {
   userCreateValidation,
+  loginValidate
 };
