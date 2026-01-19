@@ -40,7 +40,7 @@ const register = async (req, res) => {
 
   // if user was created sucessfully, return token
   if(!newUser){
-    res.status(422).json({erros: ["Houve um erro, por favor tente mais tarde."]})
+    res.status(422).json({errors: ["Houve um erro, por favor tente mais tarde."]})
     return
   }
 
@@ -51,8 +51,32 @@ const register = async (req, res) => {
 };
 
 // Sign user in
-const login = (req, res) => {
-  res.send("Login")
+const login = async (req, res) => {
+  
+  const {email, password} = req.body
+
+  const user = await User.findOne({email})
+
+  // check if user exists
+  if(!user){
+    res.status(404).json({errors: ["Usuário não encontrado."]})
+    return
+  }
+
+  // check if password matches
+  if(!(await bcrypt.compare(password, user.password))){
+    res.status(422).json({errors: ["A senha esta incorreta."]})
+    return
+  }
+
+  //Return user with token
+   res.status(201).json({
+    _id: user._id,
+    profileImage: user.profileImage,
+    token: generateToken(user._id)
+  })
+
+
 }
 
 module.exports = {
