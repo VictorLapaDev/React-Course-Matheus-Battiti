@@ -189,7 +189,19 @@ const commentPhoto = async (req, res) => {
   await photo.save();
   res
     .status(200)
-    .json({comment: userComment, message: "O comentário foi adicionado com sucesso"});
+    .json({
+      comment: userComment,
+      message: "O comentário foi adicionado com sucesso",
+    });
+};
+
+// Busca de imagens
+const searchPhoto = async (req, res) => {
+  const { q } = req.query;
+
+  const photos = await Photo.find({ title: new RegExp(q, "i") }).exec();
+
+  res.status(200).json(photos);
 };
 
 module.exports = {
@@ -200,5 +212,6 @@ module.exports = {
   getPhotoById,
   updatePhoto,
   likePhoto,
-  commentPhoto
+  commentPhoto,
+  searchPhoto
 };
