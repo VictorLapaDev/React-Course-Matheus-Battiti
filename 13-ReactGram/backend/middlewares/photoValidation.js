@@ -20,4 +20,4 @@ const photoInsertValidation = () => {
 };
 
 
-module.exports = photoInsertValidation
+module.exports = {photoInsertValidation}
